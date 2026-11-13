@@ -1,0 +1,193 @@
+/* Hallmark custom, source-faithful Figma section assembly. */
+/* Critique: former studies flattened the source waves, reused generic cards and imposed identical chrome. */
+/* Explicit constraints: exact source copy, no photos/logos, sticky two-tier structure and 1.618 ratios. */
+@font-face{font-family:Lato;src:url(fonts/Lato-Regular.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Lato;src:url(fonts/Lato-Bold.ttf) format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:Baskervville;src:url(fonts/Baskervville.ttf) format('truetype');font-weight:400 700;font-display:swap}
+@font-face{font-family:SourceSans;src:url(fonts/SourceSansPro-400.ttf) format('truetype');font-weight:400;font-display:swap}@font-face{font-family:SourceSans;src:url(fonts/SourceSansPro-600.ttf) format('truetype');font-weight:600;font-display:swap}@font-face{font-family:SourceSans;src:url(fonts/SourceSansPro-700.ttf) format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:NotoSerif;src:url(fonts/NotoSerif.ttf) format('truetype');font-weight:400 700;font-display:swap}
+:root{--phi:1.618;--body-size:1.125rem;--body:Lato,sans-serif;--heading:Lato,sans-serif;--ink:#424242;--paper:#ffffff;--cream:#f9f7f1;--sand:#dcceb0;--sand-surface:#f6efe1;--gold:#dec693;--burgundy:#6b2e2e;--ruby:#640101;--black:#000000;--white:#ffffff;--line:#dfdfdf;--photo:#e5e3df;--bronze:#382007;--accent:var(--ink);--head-upper:var(--paper);--head-lower:var(--sand);--head-ink:var(--ink);--phone-bg:var(--sand);--phone-ink:var(--ink);--phone-radius:99px;--nav-size:.875rem;--max:1080px;--nav-height:48px;--header-height:calc(var(--nav-height)*2.618);--button-bg:var(--sand);--button-ink:var(--ink);--button-radius:99px;--whatsapp:#25d366;--focus:var(--ruby);--widget-shadow:0 6px 24px rgba(0,0,0,.18);--ribbon-shadow:0 1px 3px -2px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);--frame-shadow:7px 7px 0 2px rgba(255,255,255,.41),15px 15px 0 2px var(--gold);--dialog-shadow:0 10px 30px rgba(2,2,3,.28);--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html,body{overflow-x:clip}html{scroll-padding-block-start:calc(var(--header-height) + 24px);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--body-size)/1.6 var(--body)}
+h1,h2,h3,p{margin:0}h1,h2,h3{font-family:var(--heading);font-weight:600;font-size:calc(var(--body-size)*var(--phi));line-height:1.35;letter-spacing:0;min-width:0;overflow-wrap:break-word;text-wrap:balance}
+p{font-size:var(--body-size);line-height:1.6;max-width:68ch;text-wrap:pretty}p+p{margin-top:20px}a{color:inherit;text-underline-offset:4px}button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:5px}
+.wrap{width:min(var(--max),calc(100% - 64px));margin-inline:auto;min-width:0}
+.site-header{position:sticky;top:0;z-index:30;color:var(--head-ink);font-family:var(--body)}
+.header-upper{height:calc(var(--nav-height)*var(--phi));background:var(--head-upper)}.top-row{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;flex:none;text-decoration:none}.logo-placeholder{display:block;width:120px;height:54px;background:transparent;border:0}
+.header-phone{display:inline-flex;gap:10px;align-items:center;justify-content:center;min-height:44px;padding:10px 20px;background:var(--phone-bg);color:var(--phone-ink);font:700 .875rem/1.4 var(--body);border:1px solid rgba(0,0,0,.05);border-radius:var(--phone-radius);white-space:nowrap;text-decoration:none}
+.header-phone span{text-decoration:underline;text-underline-offset:3px}.header-phone svg{width:18px;height:18px;flex:none}.header-phone:hover{filter:brightness(.94)}
+.header-lower{height:var(--nav-height);background:var(--head-lower)}.nav-row{height:100%;display:flex;align-items:center;justify-content:center;gap:48px;border-top:1px solid rgba(0,0,0,.05);font:400 var(--nav-size)/1.4 var(--body)}
+.nav-row a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;white-space:nowrap;padding:5px 0}.nav-row a[aria-current]{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}.nav-row [aria-disabled]{cursor:default}
+.skip{position:fixed;top:-120px;left:20px;z-index:60;padding:10px 16px;background:var(--paper);color:var(--ink);font-size:1rem}.skip:focus{top:16px}
+section{position:relative;isolation:isolate;scroll-margin-block-start:0}
+.hero h1{margin-bottom:24px}.hero-description p+p{margin-top:16px}.actions{display:flex;align-items:center;justify-content:inherit;flex-wrap:wrap;gap:12px 20px}
+.hero .actions{margin-top:28px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 22px;text-align:center;text-decoration:none;font:700 1rem/1.4 var(--body);background:var(--button-bg);color:var(--button-ink);border:1px solid rgba(0,0,0,.05);border-radius:var(--button-radius)}
+.button:hover{filter:brightness(.93)}.button:active{filter:brightness(.88)}
+.hero-resource-links{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:24px;font-size:1rem;line-height:1.5}.hero-resource-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-thickness:1px;cursor:default}
+.photo{background:var(--photo);min-width:0;pointer-events:none}.wave{position:absolute;left:0;right:0;bottom:-1px;height:150px;overflow:clip;pointer-events:none;z-index:2}.wave img{display:block;position:absolute;left:50%;top:0;transform:translateX(-50%);max-width:none}
+.wave-top{bottom:auto;top:-1px;transform:rotate(180deg)}
+.section-title{display:flex;gap:24px;align-items:center;justify-content:center;text-align:center;margin-bottom:52px}.section-title:before,.section-title:after{content:'';height:2px;flex:1;background:var(--ink);opacity:.1}.section-title h2{max-width:34ch}
+.short-rule:after{content:'';display:block;width:79px;height:1px;background:var(--burgundy);margin-top:24px}
+.intro-content h2{margin-bottom:24px}.article-copy h3{margin-bottom:20px}.comparison-title{margin-bottom:40px}.contact-copy p{max-width:40ch;font-family:var(--heading);font-size:calc(var(--body-size)*var(--phi));line-height:1.4;text-wrap:balance}.contact-copy strong{font-weight:600}
+.contact-phone-row{margin-top:12px}
+.footer{padding:64px 0 32px;background:var(--cream)}.footer-main{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1.25fr) minmax(0,1fr);gap:48px}.footer .logo-placeholder{height:40px;margin-bottom:16px}.footer p{font-size:1rem;line-height:1.7;overflow-wrap:anywhere}.footer strong{display:inline-block;margin-top:12px;font:600 1.618rem/1.3 var(--heading)}.footer-contacts,.footer-hours{padding-top:56px}.footer-legal{margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}.footer-legal p{font-size:.875rem}
+.floating{position:fixed;z-index:40;text-decoration:none}.floating.whatsapp-widget{display:grid;place-items:center;width:58px;height:58px;min-height:58px;padding:0;right:26px;bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--whatsapp);color:var(--white);border-radius:50%;box-shadow:var(--widget-shadow);animation:whatsapp-float 3.6s ease-in-out infinite}.whatsapp-widget svg{display:block;width:30px;height:30px}.whatsapp-widget:hover,.whatsapp-widget:focus-visible{animation-play-state:paused}.whatsapp-widget-label{position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%);padding:10px 14px;border-radius:5px;white-space:nowrap;background:var(--ink);color:var(--white);opacity:0;pointer-events:none;font-size:14px;transition:opacity .2s var(--ease)}.whatsapp-widget:hover .whatsapp-widget-label,.whatsapp-widget:focus-visible .whatsapp-widget-label{opacity:1}@keyframes whatsapp-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.email-app-dialog{width:min(440px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:32px;border:1px solid var(--line);border-radius:5.6px;color:var(--ink);background:var(--paper);box-shadow:var(--dialog-shadow)}.email-app-dialog::backdrop{background:rgba(0,0,0,.45)}.email-app-dialog h2{padding-right:24px;margin-bottom:24px}.email-app-close{display:grid;place-items:center;position:absolute;right:6px;top:6px;width:40px;height:40px;border:0;padding:0;background:transparent;color:var(--ink);font:400 28px/1 var(--body)}.email-app-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.email-app-option{display:flex;align-items:center;justify-content:center;min-height:46px;padding:12px 14px;border:1px solid var(--accent);border-radius:var(--button-radius);background:var(--accent);color:var(--white);text-decoration:none;font-size:1rem;text-align:center}
+@media(max-width:900px){.wrap{width:calc(100% - 48px)}.footer-main{gap:32px}}
+@media(max-width:700px){:root{--nav-height:48px}.wrap{width:calc(100% - 40px)}.logo-placeholder{width:94px;height:38px}.top-row{gap:12px}.header-phone{padding:10px 12px;gap:6px}.nav-row{gap:28px;font-size:.8125rem}.hero{--body-size:1.125rem!important}.hero .actions{gap:12px}.hero .actions .button{width:100%;min-height:48px}.hero-resource-links{display:grid;gap:4px;margin-top:20px}.section-title{gap:14px;margin-bottom:36px}.section-title:before,.section-title:after{min-width:18px;flex:0 0 18px}.footer{padding:40px 0 96px}.footer-main{grid-template-columns:minmax(0,1fr);gap:24px}.footer .logo-placeholder{height:20px;margin:0}.footer-contacts,.footer-hours{padding-top:0}.footer-legal{margin-top:28px}.floating.whatsapp-widget{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:56px;height:56px;min-height:56px}}
+@media(max-width:360px){.wrap{width:calc(100% - 32px)}.header-phone{font-size:.75rem;padding-inline:8px}.brand .logo-placeholder{width:76px}.nav-row{gap:22px}}
+@media(max-width:440px){.email-app-options{grid-template-columns:minmax(0,1fr)}}
+@media(hover:none){.whatsapp-widget-label{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+/* PINTUCCI editorial columns 1:559 + SOPHIN wave 2:1533, services 2:1948 and overlapping ribbon 2:2631. */
+.v4{--body:Lato,sans-serif;--heading:Baskervville,serif;--head-upper:#170901;--head-lower:#dcceb0;--phone-bg:#424242;--phone-ink:#ffffff;--button-bg:#424242;--button-ink:#ffffff;--max:1140px}.v4 .hero{--body-size:1.3125rem;background:var(--sand);padding:72px 0 164px}.v4 .hero-editorial{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:start}.v4 .hero h1{max-width:26ch;font-weight:600}.v4 .hero .actions{grid-column:1 / -1;justify-content:center;margin-top:0}.v4 .hero-resource-links{grid-column:1 / -1;justify-content:center;margin-top:-12px}.v4 .hero .button:not(:first-child){background:var(--white);color:var(--ink)}
+.v4 .home-intro{padding:52px 0 72px;background:var(--cream)}.v4 .intro-layout{max-width:860px}.v4 .intro-content h2{max-width:34ch}.v4 .intro-content h2:after{content:'';display:block;width:79px;height:1px;margin-top:26px;background:var(--burgundy)}
+.v4 .assurance{padding:154px 0 120px;background:#f4ebd7}.v4 .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.v4 .service-card{background:var(--sand-surface);padding:32px 28px 40px;box-shadow:var(--ribbon-shadow)}.v4 .service-card h3{font-family:var(--body);font-weight:700}.v4 .service-icon{display:grid;place-items:center;width:60px;height:68px;margin:0 auto 24px;overflow:clip;position:relative}.v4 .service-icon img{max-width:none;display:block}.v4 .icon-transport{display:block}.v4 .icon-transport img{position:absolute;left:0;top:0}.v4 .service-card h3{text-align:center}.v4 .service-card p{text-align:center}
+.v4 .contact{background:var(--cream);padding-bottom:64px}.v4 .contact-layout{position:relative;top:-60px;margin-bottom:-60px;background:var(--white);border-radius:10px;box-shadow:var(--ribbon-shadow);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.v4 .contact-copy,.v4 .contact-actions{padding:40px}.v4 .contact-actions{border-left:1px solid var(--line)}.v4 .contact-actions .button{flex:1 1 100%}.v4 .footer{padding-top:0;background:var(--cream)}
+@media(max-width:900px){.v4 .hero-editorial{gap:32px}.v4 .service-grid{gap:16px}.v4 .service-card{padding:28px 20px}.v4 .contact-copy,.v4 .contact-actions{padding:32px}}
+@media(max-width:700px){.v4 .hero{padding:44px 0 150px}.v4 .hero-editorial{grid-template-columns:minmax(0,1fr);gap:20px}.v4 .hero h1{max-width:none;margin-bottom:0}.v4 .hero .actions{grid-column:1;margin-top:8px}.v4 .hero-resource-links{grid-column:1;margin-top:0}.v4 .home-intro{padding:44px 0 56px}.v4 .assurance{padding:146px 0 96px}.v4 .service-grid{grid-template-columns:minmax(0,1fr);gap:24px}.v4 .service-card{padding:28px 24px 36px}.v4 .contact-layout{grid-template-columns:minmax(0,1fr);top:-40px;margin-bottom:-40px}.v4 .contact-copy,.v4 .contact-actions{padding:28px 24px}.v4 .contact-actions{border:0;border-top:1px solid var(--line)}}
+
+.section-title .comparison-title{margin-bottom:0}
+
+/* Requested Studio 4 logo, split hero and comparison layout. */
+.v4 .site-logo{position:relative;display:block;flex:none;width:162px;aspect-ratio:1010/399;overflow:hidden}
+.v4 .site-logo img{position:absolute;display:block;max-width:none;width:160.891089%;height:auto;left:-1.089109%;top:-13.283208%}
+.v4 .footer-logo{display:block;width:240px;max-width:100%;padding:12px;background:#170901;margin-bottom:16px}
+.v4 .footer-logo .site-logo{width:100%}
+.v4 .hero{padding:0 0 150px}
+.v4 .hero-editorial{width:100%;grid-template-columns:minmax(0,45fr) minmax(0,55fr);gap:0;align-items:stretch}
+.v4 .hero-copy{min-width:0;padding:64px 48px 32px max(32px,calc((100vw - var(--max))/2))}
+.v4 .hero .actions{justify-content:flex-start;margin-top:28px}
+.v4 .hero-resource-links{justify-content:flex-start;margin-top:24px}
+.v4 .hero-media{position:relative;min-width:0}
+.v4 .hero-media img{position:absolute;inset:0;width:100%;height:calc(100% + 150px);object-fit:cover;object-position:center;display:block}
+.v4 .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.v4 .service-card{position:relative;border:1px solid #ff0000}
+.v4 .service-card-positive{grid-column:1/-1;border-color:#008000}.v4 .service-card-positive p{margin-inline:auto}
+.v4 .service-tick{position:absolute;top:8px;left:8px;display:block;width:7px;height:5px;color:#008000}
+@media(max-width:900px){.v4 .hero-copy{padding:48px 28px 32px 24px}}
+@media(max-width:700px){
+ .v4 .brand .site-logo{width:122px}
+ .v4 .hero-editorial{grid-template-columns:minmax(0,1fr)}
+ .v4 .hero-copy{padding:44px 20px 32px}
+ .v4 .hero h1{margin-bottom:24px}
+ .v4 .hero-resource-links{margin-top:20px}
+ .v4 .hero-media{height:auto;aspect-ratio:1024/682}
+ .v4 .service-grid{grid-template-columns:minmax(0,1fr)}
+ .v4 .service-card-positive{grid-column:auto}
+}
+@media(max-width:360px){.v4 .brand .site-logo{width:102px}.v4 .hero-copy{padding-inline:16px}}
+
+/* Requested Nicola identity, dark hero/footer and comparison refinements. */
+.v4 .brand-name{display:block;color:var(--white);font:600 1.75rem/1.2 var(--heading)}
+.v4 .footer{background:var(--head-upper);color:var(--white);padding-top:32px}
+.v4 .hero{background:var(--black);color:var(--white)}
+.v4 .hero .button:first-child{background:var(--white);color:var(--ink)}
+.v4 .hero .button:not(:first-child){background:var(--ink);color:var(--white)}
+.v4 .service-grid{--comparison-column-gap:24px;column-gap:var(--comparison-column-gap);row-gap:64px;grid-auto-rows:1fr}
+.v4 .service-card{background:var(--cream);border:0;border-bottom:1px solid var(--ruby)}
+.v4 .service-card-positive{width:calc((100% - var(--comparison-column-gap))/2);justify-self:center;border-bottom-color:#008000}
+@media(max-width:900px){.v4 .service-grid{--comparison-column-gap:16px}}
+@media(max-width:700px){
+ .v4 .service-grid{row-gap:24px;grid-template-rows:1fr 1fr 16px 1fr;grid-auto-rows:1fr}
+ .v4 .service-card-positive{width:100%;grid-row:4;margin-top:0}
+}
+
+/* Nature Morte: original 50px noise tile and -7-degree, one-pixel nested oval.
+   PieterKoopt: pinned circular card sweep; original ease and 3-degree spacing. */
+.v4{--head-upper:#000000;--head-lower:var(--cream);--oval-red:#f3471e}
+.v4 .header-upper,.v4 .header-lower{position:relative;isolation:isolate}
+.v4 .header-upper:before,.v4 .header-lower:before,.v4 .hero-copy:before{content:'';position:absolute;inset:0;z-index:-1;background:url(assets/nature-morte-noise.webp) 0 0/3.125rem repeat;pointer-events:none}
+.v4 .header-upper:before,.v4 .hero-copy:before{filter:invert(1);opacity:.38}
+.v4 .site-header .brand-name{font-style:italic}
+.v4 .top-row{justify-content:center;gap:40px}
+.v4 .header-phone,.v4 .hero .button:first-child,.v4 .hero .button:not(:first-child),.v4 .contact .button{position:relative;isolation:isolate;border:0;border-radius:0;background:transparent;color:var(--white);filter:none}
+.v4 .header-phone{padding-inline:24px}
+.v4 .header-phone .link-oval,.v4 .button .link-oval{position:absolute;inset:0;z-index:-1;border:1px solid rgba(255,255,255,.4);border-radius:50%;transform:rotate(-7deg);pointer-events:none}
+.v4 .header-phone .link-oval-hover,.v4 .button .link-oval-hover{position:absolute;inset:0;margin:-1px;border:1px solid var(--oval-red);border-radius:50%;transition:transform .5s,background-color .5s;pointer-events:none}
+.v4 .header-phone:hover .link-oval-hover,.v4 .button:hover .link-oval-hover{transform:rotate(7deg);background:var(--oval-red)}
+.v4 .contact .button{color:var(--ink);flex:0 1 auto;width:auto;min-width:min(260px,100%);padding-inline:28px}
+.v4 .contact .actions{justify-content:center;gap:28px 20px}
+.v4 .contact-phone-row{margin-top:28px}
+.v4 .contact .button:hover{color:var(--white)}
+.v4 .hero .actions{gap:28px 24px}
+.v4 .hero-copy-viewport{position:relative;min-width:0;overflow:clip}
+.v4 .hero-copy{position:relative;isolation:isolate;min-height:100%;background:#000;animation:hero-panel-enter 1s cubic-bezier(.87,0,.13,1) both}
+@keyframes hero-panel-enter{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.v4 .comparison-title{font-size:calc(var(--body-size)*var(--phi)*1.35)}
+.v4 .service-card{border-left:1px solid var(--ruby)}
+.v4 .service-card-positive{border-left-color:#008000}
+.v4 .cards-motion .comparison-panel{width:100%;height:var(--comparison-height);position:relative;overflow:clip}
+.v4 .cards-motion .section-title{position:absolute;left:max(32px,calc((100vw - var(--max))/2));top:50%;transform:translateY(-50%);width:min(29vw,360px);display:block;text-align:left;margin:0;z-index:3}
+.v4 .cards-motion .section-title:before,.v4 .cards-motion .section-title:after{display:none}
+.v4 .cards-motion .service-grid{position:absolute;inset:0;width:100%;height:100%;margin:0;display:block;grid-template:none}
+.v4 .cards-motion .uc-circle{position:absolute;top:50%;left:40%;width:250vw;height:250vw;border-radius:100%;transform:translateX(-38%);will-change:transform;pointer-events:none}
+.v4 .cards-motion .service-card{position:absolute;top:0;left:50%;width:min(558px,42vw);min-height:var(--comparison-card-height,0px);height:auto;margin:0;transform:translate(-50%,55vh);transform-origin:50%;will-change:transform;pointer-events:auto;grid-column:auto;grid-row:auto}
+@media(max-width:700px){.v4 .top-row{gap:20px}.v4 .header-phone{padding-inline:18px}}
+@media(prefers-reduced-motion:reduce){.v4 .hero-copy{transform:none;animation:none}}
+
+/* Requested icon additions and compact Nature Morte oval proportions. */
+.v4 .header-lower:before,.v4 .hero-copy:before{content:none;background-image:none}
+.v4 .intro-content h2{font-size:calc(var(--body-size)*var(--phi)*1.35)}
+.v4 .comparison-title-group{display:flex;flex-direction:column;align-items:center;min-width:0}
+.v4 .comparison-arrow{display:inline-flex;align-items:center;justify-content:center;color:inherit;font-size:1rem;margin-block-start:2em;width:24px;height:24px;flex:none}
+.v4 .comparison-arrow svg{display:block;overflow:visible}
+.v4 .cards-motion .comparison-title-group{align-items:flex-start}
+.v4 .service-check{position:absolute;top:12px;right:12px;left:auto;display:block;width:24px;height:24px;color:#008000;overflow:visible}
+.v4 .service-check path{transform-box:fill-box;transform-origin:center;stroke-dashoffset:0;opacity:1}
+.v4 .header-phone{width:170px;height:calc(170px / 3);min-height:0;padding:0 14px;flex:none;gap:10px}
+.v4 .hero .button{width:max-content;min-width:210px;max-width:100%;aspect-ratio:3;height:auto;min-height:0;padding:0 22px}
+.v4 .contact .button{width:260px;min-width:0;max-width:100%;aspect-ratio:3;height:auto;min-height:0;padding:0 28px;flex:none}
+.v4 .contact .actions{flex-direction:column;align-items:center}
+.v4 .header-phone .link-oval-hover,.v4 .button .link-oval-hover{background:transparent;transition:background-color .2s,box-shadow .2s,border-color .2s}
+.v4 .header-phone:hover .link-oval-hover,.v4 .header-phone:focus-visible .link-oval-hover,.v4 .button:hover .link-oval-hover,.v4 .button:focus-visible .link-oval-hover{transform:none;background:rgba(255,255,255,.14);border-color:var(--oval-red);box-shadow:0 0 16px rgba(243,71,30,.14)}
+.v4 .header-phone:active .link-oval-hover,.v4 .button:active .link-oval-hover{background:rgba(255,255,255,.22)}
+.v4 .contact .button:hover,.v4 .contact .button:focus-visible{color:var(--ink)}
+.v4 .contact .button:hover .link-oval-hover,.v4 .contact .button:focus-visible .link-oval-hover{background:rgba(243,71,30,.07);box-shadow:0 0 18px rgba(243,71,30,.18)}
+.v4 .contact .button:active .link-oval-hover{background:rgba(243,71,30,.12)}
+@media(max-width:700px){.v4 .hero .actions .button{width:100%;min-width:0;min-height:0}.v4 .header-phone{padding-inline:14px;gap:6px}}
+
+/* Requested filled actions; color sampled from the hero's gold highlights.
+   Corner radius is fitted to the uploaded 24px-radius / 132px-height example. */
+.v4{--photo-action-fill:#d4bc89;--photo-action-ink:#170901}
+.v4 .header-phone,.v4 .hero .button:first-child,.v4 .hero .button:not(:first-child),.v4 .contact .button,.v4 .contact .button:hover,.v4 .contact .button:focus-visible{background:var(--photo-action-fill);color:var(--photo-action-ink);border-radius:var(--photo-action-radius,12px);filter:none;box-shadow:inset 0 0 0 100vmax rgba(255,255,255,0);transition:box-shadow .2s}
+.v4 .header-phone .link-oval,.v4 .hero .button .link-oval,.v4 .contact .button .link-oval{display:none}
+.v4 .header-phone:is(:hover,:focus-visible),.v4 .hero .button:is(:hover,:focus-visible),.v4 .contact .button:is(:hover,:focus-visible){box-shadow:inset 0 0 0 100vmax rgba(255,255,255,.14)}
+.v4 .header-phone:active,.v4 .hero .button:active,.v4 .contact .button:active{box-shadow:inset 0 0 0 100vmax rgba(255,255,255,.22)}
+.v4 .cards-motion .comparison-title-group{width:fit-content;max-width:100%;align-items:center}
+.v4 .service-check{left:12px;right:auto}
+
+/* Requested slimmer actions: equal padding on every side and exact colors. */
+.v4{--photo-action-fill:#FADD00}
+.v4 .header-phone,.v4 .hero .actions .button,.v4 .contact .button{width:max-content;min-width:0;max-width:100%;height:auto;min-height:0;aspect-ratio:auto;padding:12px;flex:0 1 auto}
+.v4 .contact .button,.v4 .contact .button:hover,.v4 .contact .button:focus-visible,.v4 .contact .button:active{background:#4F3815;color:#ffffff}
+
+/* Requested comparison spacing and stronger positive-card emphasis. */
+.v4 .assurance{padding-top:107.8px}
+.v4 .cards-motion .section-title{top:35%;transform:translateY(-35%)}
+.v4 .service-grid{grid-auto-rows:auto}
+.v4 .service-card{min-height:var(--comparison-card-height,0px)}
+.v4 .service-card-positive{width:calc((100% - var(--comparison-column-gap))*.6);min-height:calc(var(--comparison-card-height,0px)*1.2);border-left-width:2px;border-bottom-width:2px}
+.v4 .cards-motion .service-card-positive{left:calc(50% - min(111.6px,8.4vw));width:min(669.6px,50.4vw);min-height:calc(var(--comparison-card-height,0px)*1.2)}
+.v4 .service-check{width:31.2px;height:31.2px}
+.v4 .service-check .check-circle{stroke-dashoffset:0;opacity:0}
+.v4 .service-check[data-check-revealed] .check-circle{opacity:1}
+@media(prefers-reduced-motion:reduce){.v4 .service-check .check-circle{opacity:1}}
+@media(max-width:700px){
+ .v4 .assurance{padding-top:102.2px}
+ .v4 .service-grid{grid-template-rows:auto auto 16px auto}
+ .v4 .service-card-positive{width:100%}
+}
+
+/* Requested circle, balanced positive-card padding and section spacing. */
+.v4 .home-intro{padding-top:65px;padding-bottom:90px}
+.v4 .assurance{padding-top:70.07px}
+.v4 .cards-motion .section-title{top:22.75%;transform:translateY(-22.75%)}
+.v4 .service-card-positive{display:flex;flex-direction:column;padding:41.6px}
+.v4 .service-card-positive .article-copy{display:flex;flex:1;flex-direction:column;justify-content:flex-start;min-width:0}
+@media(max-width:700px){
+ .v4 .home-intro{padding-top:55px;padding-bottom:70px}
+ .v4 .assurance{padding-top:66.43px}
+}

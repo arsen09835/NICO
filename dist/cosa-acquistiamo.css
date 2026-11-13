@@ -1,0 +1,28 @@
+/* Cosa acquistiamo: reuse the homepage split hero, type and action buttons. */
+.purchases-page .purchases-hero{padding:0;background:linear-gradient(90deg,var(--black) 0%,var(--black) 45%,var(--cream) 45%,var(--cream) 100%)}
+.purchases-page .category-ledger{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);gap:0;align-items:start}
+.purchases-page .catalogue-title{position:sticky;top:var(--header-height);min-width:0;min-height:calc(100svh - var(--header-height));background:var(--black);color:var(--white)}
+.purchases-page .hero-copy{min-height:inherit}
+.purchases-page .eyebrow{font-size:var(--body-size);line-height:1.5;margin:0 0 16px}
+.purchases-page .ledger-list{--body-size:1.125rem;min-width:0;padding:64px max(32px,calc((100vw - var(--max))/2)) 64px 48px;color:var(--ink);background:var(--cream)}
+.purchases-page .category,.purchases-page .category-copy{min-width:0}
+.purchases-page .category{padding:28px 0;border-top:1px solid var(--line)}
+.purchases-page .category:first-child{padding-top:0;border-top:0}
+.purchases-page .category h2{font:700 calc(var(--body-size)*var(--phi))/1.35 var(--body);margin:0 0 14px}
+.purchases-page .category p{line-height:1.6}
+@media(max-width:1050px){
+ .purchases-page .catalogue-title{position:static;min-height:0}
+}
+@media(min-width:1051px) and (max-height:900px){
+ .purchases-page .catalogue-title{position:static;min-height:0}
+}
+@media(max-width:900px){
+ .purchases-page .ledger-list{padding:48px 24px 48px 28px}
+}
+@media(max-width:700px){
+ .purchases-page .purchases-hero{background:var(--cream)}
+ .purchases-page .category-ledger{grid-template-columns:minmax(0,1fr)}
+ .purchases-page .catalogue-title{position:static;min-height:0}
+ .purchases-page .ledger-list{padding:44px 20px 56px}
+}
+@media(max-width:360px){.purchases-page .ledger-list{padding-inline:16px}}
