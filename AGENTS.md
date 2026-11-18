@@ -6,13 +6,13 @@
 - Use the latest repository state before making edits. Make only the changes requested by the user.
 - Preserve all Italian copy, typography, colors, spacing, motion, imagery and behavior outside the requested scope. Do not redesign or rewrite copy without instructions.
 - Preserve the shared sticky two-part header, existing navigation, Nicola footer and green floating WhatsApp widget unless the user requests a change.
-- Existing pages are `/`, `/cosa-acquistiamo/` and `/sgomberi/`. Sgomberi has a light background and no body CTA section; it retains the WhatsApp widget.
+- Existing pages are `/`, `/cosa-acquistiamo/` and `/sgomberi/`. Preserve the imported Editorial Redesign version 17, including device-specific layouts, the home comparison animation, mobile category/process disclosures and each page's existing CTA sections.
 - Gmail links target `nicholaslisoni7@gmail.com`; phone and WhatsApp links target `+393494262546`.
 
 ## Implementation and verification
 
 - This is a buildless HTML/CSS/JavaScript site. Do not add a framework or new dependencies without a task-based reason.
-- Keep shared changes in `dist/styles.css` and page-specific changes in the relevant page stylesheet.
+- Keep shared changes in the applicable existing stylesheet (`dist/styles.css`, `dist/design.css` or `dist/reference-adaptation.css`) and page-specific changes in the relevant page stylesheet.
 - Preserve the vendored libraries and bundled assets unless a requested change requires an update.
 - Preview with `python3 -m http.server 8000 --directory dist`, or use the environment's supported managed Site preview.
 - Check relevant routes, local asset paths and desktop/mobile layouts. Check modified JavaScript with `node --check` when applicable.
@@ -23,3 +23,5 @@
 - Preserve existing repository files and history. Do not force-push.
 - Commit and push requested changes to this repository. Report the resulting commit or pull request.
 - A GitHub push does not automatically update the existing hosted Site. If publication is requested, preserve the project identity in `.openai/hosting.json` and the Site's existing audience, and use the supported deployment workflow. Do not create a duplicate Site or enable public hosting without a request.
+
+- The separately hosted Editorial Redesign at https://nicola-redesign-1411.arsenbryt.chatgpt.site/ is a preserved reference. Do not edit or redeploy it when working on this repository.

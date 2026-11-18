@@ -28,6 +28,7 @@
   const setup = () => {
     media.add({
       desktop: '(min-width: 992px) and (min-height: 650px)',
+      mobile: '(max-width: 900px)',
       motion: '(prefers-reduced-motion: no-preference)'
     }, context => {
       if (!context.conditions.motion) {
@@ -54,13 +55,13 @@
         if (cardHeight + 48 <= availableHeight()) {
           pinned = true;
 
-          // Source: .pin-height = 400vh; one viewport of scroll per card.
+          // The first reveal happens on approach; later cards keep one viewport per reveal.
           gsap.fromTo(grid, { y: '0%' }, {
             y: '0%', ease: 'none',
             scrollTrigger: {
               id: 'nicola-comparison-pin', trigger: track,
               start: () => 'top ' + pinTop(),
-              end: () => '+=' + window.innerHeight * cards.length,
+              end: () => '+=' + window.innerHeight * (cards.length - 1),
               pin: panel, pinSpacing: true, scrub: true,
               anticipatePin: 1, invalidateOnRefresh: true,
               onRefresh: () => section.style.setProperty('--comparison-height', availableHeight() + 'px')
@@ -70,7 +71,7 @@
           circles.forEach((circle, index) => {
             const scroll = {
               trigger: track,
-              start: () => 'top ' + (pinTop() - window.innerHeight * index),
+              start: () => 'top ' + (pinTop() + window.innerHeight * (1 - index)),
               end: () => '+=' + window.innerHeight,
               scrub: true, invalidateOnRefresh: true
             };
@@ -92,12 +93,23 @@
 
       if (!pinned) {
         fitCardSizes();
-        // The reference releases pinning below 992px. Preserve that reading
-        // room, with sequential entry using its non-split reveal timing.
-        cards.forEach(card => gsap.from(card, {
-          y: 20, opacity: 0, duration: .7, ease: 'power2.out',
-          scrollTrigger: { trigger: card, start: 'top 90%', once: true }
-        }));
+        if (context.conditions.mobile) {
+          // Keep full-size cards in native page flow on phones; retain the
+          // lift and rotation reveal without clipping or scaling their content.
+          cards.forEach((card, index) => gsap.fromTo(card, {
+            y: 48, rotation: 3, opacity: 0
+          }, {
+            y: 0, rotation: (index - 1) * 2, opacity: 1, duration: .7, ease: 'power2.out',
+            scrollTrigger: { trigger: card, start: 'top bottom', once: true }
+          }));
+        } else {
+          // The reference releases pinning below 992px. Preserve that reading
+          // room, with sequential entry using its non-split reveal timing.
+          cards.forEach(card => gsap.from(card, {
+            y: 20, opacity: 0, duration: .7, ease: 'power2.out',
+            scrollTrigger: { trigger: card, start: 'top bottom', once: true }
+          }));
+        }
       }
 
       gsap.from(contact, {
@@ -108,8 +120,12 @@
       return () => {
         circles.forEach(circle => { if (circle.firstElementChild) circle.replaceWith(circle.firstElementChild); });
         section.classList.remove('cards-motion');
+        section.classList.remove('cards-motion-mobile');
         section.style.removeProperty('--comparison-height');
         section.style.removeProperty('--comparison-card-height');
+        section.style.removeProperty('--mobile-comparison-height');
+        section.style.removeProperty('--mobile-card-width');
+        section.style.removeProperty('--mobile-card-top');
       };
     });
     ScrollTrigger.refresh();
